@@ -1,0 +1,38 @@
+# Desktop: big camera + small tiles + NVR panel, shown on screens 768 px and wider.
+type: custom:cctv-card
+grid_options:
+  columns: full
+visibility:
+  - condition: screen
+    media_query: "(min-width: 768px)"
+nav_buttons: true
+frigate_url: https://frigate.example.com
+nvr:
+  coral: sensor.frigate_coral_inference_speed
+  disk: sensor.frigate_storage_usage
+  uptime: sensor.frigate_uptime
+  cpu: sensor.nvr_cpu
+  mem: sensor.nvr_memory
+  mem_pct: sensor.nvr_memory_percent
+cameras:
+  - entity: camera.doorbell
+    frigate: Doorbell
+    name: Doorbell
+    occupancy: binary_sensor.doorbell_all_occupancy
+    audio: true
+  - entity: camera.driveway
+    frigate: Driveway
+    name: Driveway
+    occupancy: binary_sensor.driveway_all_occupancy
+  - entity: camera.street
+    frigate: Street
+    name: Street
+    occupancy: binary_sensor.street_all_occupancy
+  - entity: camera.back_door
+    frigate: Back_Door
+    name: Back Door
+    occupancy: binary_sensor.back_door_all_occupancy
+  - entity: camera.garden
+    frigate: Garden
+    name: Garden
+    occupancy: binary_sensor.garden_all_occupancy

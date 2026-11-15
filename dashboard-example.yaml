@@ -1,0 +1,87 @@
+# One view, two cards: Home Assistant shows the desktop card or the phone card
+# depending on screen width (the `visibility` blocks), so one tab works on both.
+title: CCTV
+path: cctv
+type: sections
+max_columns: 4
+sections:
+  - type: grid
+    column_span: 4
+    cards:
+      # --- desktop ---
+    - type: custom:cctv-card
+      grid_options:
+        columns: full
+      visibility:
+        - condition: screen
+          media_query: "(min-width: 768px)"
+      nav_buttons: true
+      frigate_url: https://frigate.example.com
+      nvr:
+        coral: sensor.frigate_coral_inference_speed
+        disk: sensor.frigate_storage_usage
+        uptime: sensor.frigate_uptime
+        cpu: sensor.nvr_cpu
+        mem: sensor.nvr_memory
+        mem_pct: sensor.nvr_memory_percent
+      cameras:
+        - entity: camera.doorbell
+          frigate: Doorbell
+          name: Doorbell
+          occupancy: binary_sensor.doorbell_all_occupancy
+          audio: true
+        - entity: camera.driveway
+          frigate: Driveway
+          name: Driveway
+          occupancy: binary_sensor.driveway_all_occupancy
+        - entity: camera.street
+          frigate: Street
+          name: Street
+          occupancy: binary_sensor.street_all_occupancy
+        - entity: camera.back_door
+          frigate: Back_Door
+          name: Back Door
+          occupancy: binary_sensor.back_door_all_occupancy
+        - entity: camera.garden
+          frigate: Garden
+          name: Garden
+          occupancy: binary_sensor.garden_all_occupancy
+      # --- phone ---
+    - type: custom:cctv-card
+      grid_options:
+        columns: full
+      visibility:
+        - condition: screen
+          media_query: "(max-width: 767px)"
+      layout: strip
+      columns: 2
+      nav_buttons: true
+      quality_by_size: true   # big tile = main stream, small tiles = each camera's `sub` stream
+      big_first: true         # when replaying, load the big tile first, the small ones after
+      frigate_url: https://frigate.example.com
+      cameras:
+        - entity: camera.doorbell
+          frigate: Doorbell
+          name: Doorbell
+          occupancy: binary_sensor.doorbell_all_occupancy
+          audio: true
+        - entity: camera.driveway
+          frigate: Driveway
+          name: Driveway
+          occupancy: binary_sensor.driveway_all_occupancy
+          sub: Driveway_sub
+        - entity: camera.street
+          frigate: Street
+          name: Street
+          occupancy: binary_sensor.street_all_occupancy
+          sub: Street_sub
+        - entity: camera.back_door
+          frigate: Back_Door
+          name: Back Door
+          occupancy: binary_sensor.back_door_all_occupancy
+          sub: Back_Door_sub
+        - entity: camera.garden
+          frigate: Garden
+          name: Garden
+          occupancy: binary_sensor.garden_all_occupancy
+          sub: Garden_sub
