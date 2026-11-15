@@ -8,7 +8,7 @@ same moment** from its Frigate recording.
 |---|---|
 | <img src="images/desktop.png" width="560" alt="Desktop: big doorbell tile, four smaller tiles, an NVR panel, the timeline and an events strip"> | <img src="images/mobile.png" width="260" alt="Phone: doorbell full width, four small tiles two per row, the timeline and an events strip"> |
 
-*(Mock-up: the real card with drawn placeholder cameras and made-up events.)*
+*(Mock-up: the real card with stock photos in place of the cameras, and made-up events. Photo credits at the bottom.)*
 
 ## What it does
 
@@ -102,6 +102,15 @@ Use two copies of the card in the same view, each with a screen-width `visibilit
 - Timeline motion is loaded in 6-hour blocks. Past blocks are cached, and the current block refreshes
   every 5 minutes.
 - Every dashboard save or resource change reloads open dashboards. That's Home Assistant, not the card.
+
+## Photo credits
+
+The screenshots use public-domain (CC0) photos, cropped and given a camera clock:
+[front door](https://www.rawpixel.com/image/6038157/photo-image-public-domain-trees-wood),
+[driveway](https://www.rawpixel.com/image/3290508/free-photo-image-outdoor-house-background-automobile-building) and
+[street](https://www.rawpixel.com/image/3301349/free-photo-image-car-city-road-asphalt) from rawpixel;
+[back deck](https://www.flickr.com/photos/71401718@N00/11283075513) and
+[garden](https://www.flickr.com/photos/71401718@N00/9181680406) by Wonderlane on Flickr.
 
 ## License
 
