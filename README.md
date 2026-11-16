@@ -10,6 +10,8 @@ same moment** from its Frigate recording.
 
 *(Mock-up: the real card with stock photos in place of the cameras, and made-up events. Photo credits at the bottom.)*
 
+> **Note:** I built this card around my own setup: four cameras and a doorbell. It hasn't been tested with other numbers of cameras.
+
 ## What it does
 
 - **Live grid.** One big camera with the rest small. Tap a small camera to make it the big one.
