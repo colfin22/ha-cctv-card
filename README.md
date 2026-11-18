@@ -10,7 +10,8 @@ same moment** from its Frigate recording.
 
 *(Mock-up: the real card with stock photos in place of the cameras, and made-up events. Photo credits at the bottom.)*
 
-> **Note:** I built this card around my own setup: four cameras and a doorbell. It hasn't been tested with other numbers of cameras.
+> **Note:** I built this card around my own setup: four cameras and a doorbell. For other numbers of
+> cameras, see [More cameras](#more-cameras) for the `columns` settings that fill the grid with no gaps.
 
 ## What it does
 
@@ -64,6 +65,23 @@ Use two copies of the card in the same view, each with a screen-width `visibilit
 - **Phone** (`max-width: 767px`): `layout: strip` with `columns: 2`. The big tile goes full width and the
   rest sit underneath, two per row, without labels so the picture isn't covered.
   `quality_by_size: true` keeps the small tiles on a lighter stream.
+
+## More cameras
+
+The big tile always takes a 2×2 block and the small tiles fill in around it, so some camera counts
+leave an empty cell at the bottom. These settings fill the grid with no gaps:
+
+| Cameras | Desktop (grid) | Phone (`layout: strip`) |
+|---|---|---|
+| 5 | `columns: 3` with `nvr`, or `columns: 4` without | `columns: 2` without `nvr` |
+| 6 | `columns: 3` without `nvr`, or `columns: 5` with | `columns: 2` or `3` with `nvr` |
+| 7 | `columns: 5` without `nvr` | `columns: 2` or `3` without `nvr` |
+| 8 | `columns: 3` or `4` with `nvr` | `columns: 2` with `nvr` |
+| 9 | `columns: 3` or `4` without `nvr` | `columns: 2` without `nvr` |
+
+- More columns means smaller tiles. With 3 columns the big tile is two-thirds of the width, with 4 it's half.
+- On a phone, `columns: 3` works but the small tiles get very small. `columns: 2` is easier to see.
+- A gap isn't a problem, it's just one empty cell at the bottom of the grid.
 
 ## Options
 
