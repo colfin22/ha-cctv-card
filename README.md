@@ -26,7 +26,9 @@ same moment** from its Frigate recording.
   Tapping the bar jumps straight to that time.
 - **◀ ▶** (optional) step through **alerts**, newest first. ▶ past the newest alert returns to live.
 - **Events strip** under the timeline: Frigate review thumbnails. Tap one to replay all cameras at that moment.
-- **Occupancy dot** on each camera label: green normally, amber while something is detected.
+- **Status dot** on each camera label, same colours as the timeline: green when quiet, grey for motion,
+  purple for a detection, amber for an alert. It reads Frigate's `binary_sensor.<camera>_motion` and
+  `sensor.<camera>_review_status`, so wind or a parked car no longer keeps it amber.
 - **NVR panel** (optional, desktop): Coral inference speed, disk, CPU, memory, uptime.
 - **Sound button** (optional, per camera), e.g. for a doorbell. Cameras start muted and the button
   turns sound on for that tile. Leaving the page mutes it again.
@@ -98,6 +100,7 @@ leave an empty cell at the bottom. These settings fill the grid with no gaps:
 | `big_first` | `false` | When replaying, load the big tile first and the small ones after it. Feels quicker on a slow connection. |
 | `frigate_url` | none | Shows a Frigate button that opens this URL. |
 | `instance_id` | `frigate` | Frigate integration instance, if you have more than one. |
+| `publish_height` | none | Shares the card's height as a CSS variable on the page (e.g. `cctv-live-height` → `--cctv-live-height`), so another card can match it. |
 
 **Each camera:**
 
@@ -106,7 +109,9 @@ leave an empty cell at the bottom. These settings fill the grid with no gaps:
 | `entity` | The camera entity, e.g. `camera.driveway`. |
 | `frigate` | The camera name in Frigate, e.g. `Driveway`. Also the go2rtc stream name for `quality_by_size`. |
 | `name` | Label on the tile. |
-| `occupancy` | Optional. A binary sensor (e.g. Frigate's `binary_sensor.<camera>_all_occupancy`) that turns the label dot amber. |
+| `motion` | Optional. Motion sensor for the label dot. Default: `binary_sensor.<frigate>_motion` (the `frigate` name in lower case). |
+| `review_status` | Optional. Review status sensor for the label dot. Default: `sensor.<frigate>_review_status`. |
+| `occupancy` | Optional, older setting. Only used when neither of the two sensors above exists: the dot turns amber while it is on. |
 | `sub` | Optional. go2rtc stream name for the small tile with `quality_by_size`, e.g. `Driveway_sub`. |
 | `audio` | Optional. `true` adds the sound button to this camera. |
 
